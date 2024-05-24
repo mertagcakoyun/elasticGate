@@ -1,0 +1,343 @@
+openapi: "3.0.3"
+info:
+  title: "dynamic_es_exposer API"
+  description: "dynamic_es_exposer API"
+  version: "1.0.0"
+servers:
+- url: "https://dynamic_es_exposer"
+paths:
+  /connections:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /connections/connection:
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/ConnectionCreateRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /connections/connection-by-name/{name}:
+    get:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /connections/connection/{name}:
+    delete:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /health:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+  /queries:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /queries/connections/{connectionName}/queries/{name}:
+    post:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "connectionName"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/QueryParams"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /queries/elastic-query:
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /queries/elastic-query-with-specific-host:
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/QueryRequestWithSpecificHost"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /queries/query-by-name/{name}:
+    get:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "string"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /queries/query/{name}:
+    delete:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "204":
+          description: "No Content"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+    put:
+      description: ""
+      parameters:
+      - name: "name"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/QueryRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "object"
+        "400":
+          description: "Bad Request"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /:
+    get:
+      description: ""
+      responses:
+        "200":
+          description: "OK"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+components:
+  schemas:
+    ConnectionCreateRequest:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        hosts:
+          type: "array"
+          items:
+            type: "string"
+        port:
+          type: "integer"
+          format: "int32"
+    QueryParams:
+      type: "object"
+      properties:
+        parameters:
+          type: "string"
+    DynamicParameter:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        type:
+          type: "string"
+        default:
+          type: "string"
+        values:
+          type: "array"
+          items:
+            type: "string"
+    QueryRequest:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        connectionName:
+          type: "string"
+        index:
+          type: "string"
+        query:
+          type: "string"
+        dynamicParameters:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/DynamicParameter"
+    QueryRequestWithSpecificHost:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        connectionName:
+          type: "string"
+        hosts:
+          type: "array"
+          items:
+            type: "string"
+        port:
+          type: "integer"
+          format: "int32"
+        index:
+          type: "string"
+        query:
+          type: "string"
+        dynamicParameters:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/DynamicParameter"

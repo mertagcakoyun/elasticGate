@@ -1,0 +1,13 @@
+.ci-commons:
+  variables:
+    SERVICE: elastic-gate
+
+variables:
+  JAVA_BUILD_IMAGE: "JAVA_IMAGE"
+  DOCKER_IMAGE_RELEASE: $IMAGE_TOKEN
+  DOCKER_IMAGE_QA: $IMAGE_TOKEN
+
+include:
+  - project: 'project-pipeline'
+    ref: 'master'
+    file: 'java/gradle/.template-alltests-v2.gitlab-ci.yml'
