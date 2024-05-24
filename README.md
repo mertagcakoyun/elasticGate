@@ -2,12 +2,16 @@
 
 ## Overview
 
-ElasticGate is a project designed to manage and expose Elasticsearch queries with dynamic parameters. This allows users to interact with Elasticsearch in a flexible way, using parameters such as `startDate`, `endDate`, and `status`. The project aims to eliminate the need for frequent code changes when displaying dynamic query results on the UI or Swagger.
+ ElasticGate allows users to obtain data from elasticsearch without any coding and create endpoints to easily use this data in any project. This system increases efficiency in software development processes by eliminating the need to create separate elasticsearch dependencies for each project. It has the capacity to store and manage your queries as you wish using dynamic parameters. This feature allows users to interact with elasticsearch flexibly and efficiently through the parameters they set, thus offering a wider range of usage and functionality.
 
 ## Purpose
 
 The primary goal is to provide a convenient way to view reports on the UI without requiring code modifications. The project enables teams to create custom endpoints with their Elasticsearch queries and connection details, fostering flexibility and ease of management.
 
+
+## System
+
+<img src="https://github.com/mertagcakoyun/es-dynamic-exposer/blob/main/dynamic-es-exposer/docs/assets/system.png" alt="Alt text" title="Optional title">
 
 ## Technologies
 
