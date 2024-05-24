@@ -11,7 +11,7 @@ The primary goal is to provide a convenient way to view reports on the UI withou
 
 ## System
 
-<img src="https://github.com/mertagcakoyun/es-dynamic-exposer/blob/main/dynamic-es-exposer/docs/assets/system.png" alt="Alt text" title="Optional title">
+<img src="https://github.com/mertagcakoyun/elasticGate/blob/main/project/docs/assets/system.png" alt="Alt text" title="Optional title">
 
 ## Technologies
 
