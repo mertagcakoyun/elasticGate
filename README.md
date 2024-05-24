@@ -1,8 +1,8 @@
-# Dynamic Elasticsearch Exposer
+# ElasticGate
 
 ## Overview
 
-Dynamic Elasticsearch Exposer is a project designed to manage and expose Elasticsearch queries with dynamic parameters. This allows users to interact with Elasticsearch in a flexible way, using parameters such as `startDate`, `endDate`, and `status`. The project aims to eliminate the need for frequent code changes when displaying dynamic query results on the UI or Swagger.
+ElasticGate is a project designed to manage and expose Elasticsearch queries with dynamic parameters. This allows users to interact with Elasticsearch in a flexible way, using parameters such as `startDate`, `endDate`, and `status`. The project aims to eliminate the need for frequent code changes when displaying dynamic query results on the UI or Swagger.
 
 ## Purpose
 
